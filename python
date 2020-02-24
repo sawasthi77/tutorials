@@ -1,0 +1,8 @@
+python is case sensitive language.
+indentation is required in python.
+no semicolon is required to differentaite two statements.
+variable name can only contain letters, number and underscores.
+Variable names can't start with numbers
+variable names are case sensitive.
+Reserved words can't be used.
+variables names should be chosen which has some meaning.
