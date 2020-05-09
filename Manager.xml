@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="Employee.xsl" ?>
+<Employees>
+	<Employee>
+		<name>Sam</name>
+		<address>Pune</address>
+		<dept>IT</dept>
+	</Employee>
+	<Employee>
+		<name>Ram</name>
+		<address>Chennai</address>
+		<dept>CSE</dept>
+	</Employee>
+	<Employee>
+		<name>Neha</name>
+		<address>US</address>
+		<dept>RD</dept>
+	</Employee>
+</Employees>

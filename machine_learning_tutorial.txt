@@ -1,0 +1,23 @@
+Machine Learning
+Supervised Learning model
+It is the technique of modelling a situation for future predections.
+Here we have data that gets divided into 3 sets :
+Train data
+Validation data
+Test Data
+So our objective is to create model based on the requirement we train our data and provide validations until we get desired results, and then pass it to the test state
+where test data comes into the picture which tests the model that can be used in production environment.
+
+
+
+Evaluating Performance:
+Model evaluation is done when our model has passed the validation and tests and then
+we classify some evaluation metrics 
+Binary classification:
+whether we have correctly or incorrectly validated our model.
+We have trained model on some training data and then we get some test data(that model doesnot know)
+after that we have some count of correct and incorrect.
+
+Accuracy:
+number of correct predictions / total number of predictions
+

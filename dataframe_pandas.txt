@@ -1,0 +1,242 @@
+DATAFRAME PANDAS 
+
+import numpy as np
+import pandas as pd
+from numpy.random import randn
+np.random.seed(101) # to get the random vales similar to the video
+df = pd.DataFrame(randn(5,4), ['A', 'B', 'C', 'D'], ['W', 'X', 'Y', 'Z'])
+df['new'] = df['W'] + df ['Y']  #to create a new column
+df.drop('new') #gives error if we want to delete the column we have to give axis
+df.drop('new', axis=1)
+df still has the column new to remove if from the actual df then we need to add
+another arguement as inplace=True
+df.drop('new', axis=1, inplace=True)
+df.loc['A'] to get the series of particular column
+#second way to grab a row df.iloc[2]
+df.loc['B', 'Y']
+df.loc[['A', 'B'], ['W', 'Y']] #subset of the dataframe of row a and b and column w and y
+df > 0 #return values True if condition is met else returns Nan
+bool_df = df > 0
+df[bool_df] # it gives values only > 0 and if < 0 then Nan
+df['W'] > 0 #to filter out rows based on column values
+df[['W'] > 0][['Y', 'X']] #is the one liner which returns the dataframe 
+where rows are greater than zero with only two columns
+#The above one liner can be broken into steps as follows:
+boolser = df['W'] > 0
+result = df[boolser]
+mycol = ['Y', 'X']
+result[mycol]
+concatenating two conditions in parenthesis and use '&' and '|'
+df[(df['W'] > 0) & (df['Y'] > 1)]
+
+df.reset_index(inplace=True) #then old index becomes the column and new numeric index comes
+
+#Multi indexing means multi levels 
+df = pd.DataFrame(randn(5,6),hier_index,['A', 'B'])
+df.loc['G1'].[1]
+
+
+df.index.name = ['Groups', 'Names']  #to give indexes a name
+
+to get any particular series from the data frame
+df.loc['G1'].loc[1]
+
+to get everything under G1
+df.loc['G1']  or df.xs('G1')
+
+
+Core Python (Basic knowledge between Python 2 and Python 3 is sufficient, complete knowledge of all modules is not required)
+Web Frameworks (Learn common Python frameworks such as Django or Pandas)
+Object-relational mappers (Ability to connect to the database with the help of ORM rather than SQL )
+Understand Multiprocess Architecture (Ability to write and manage threads for high-performance)
+RESTful APIs (understand how to use them and able to integrate components with them)
+Building Python Applications (One should know how to package up a code and deployment and release)
+Good communication and designing skills (Able to communicate well with members as well as implement servers that are scalable, secure and highly available)
+python OOP
+
+https://hclsoftwarelearning.udemy.com/course/python-django-dev-to-deployment/
+https://hclsoftwarelearning.udemy.com/course/django-python/
+https://hclsoftwarelearning.udemy.com/course/django-3-make-websites-with-python-tutorial-beginner-learn-bootstrap/
+https://hclsoftwarelearning.udemy.com/course/the-python-bible/
+
+Automate Boring stuff with Python
+
+Regular Experssions:
+Regular expressions are mini-language for specifying text patterns. Writing code to do pattern matching without regular expressions is a huge pain.
+Regex strings often use backslashes (like \d), so they are often written using raw strings: r'\d'
+\d is the regex for a numeric digit character.
+Import the re module first.
+Call the re.compile() function to create a regex object.
+Call the regex object's search() method to create a match object.
+Call the match object's group() method to get the matched string.
+
+Groups are created in regex strings with parentheses.
+The first set of parentheses is group 1, the second is 2, and so on.
+Calling group() or group(0) returns the full matching string, group(1) returns group 1's matching string, and so on.
+Use \( and \) to match literal parentheses in the regex string.
+The | pipe can match one of many possible groups.
+
+The ? says the group matches zero or one times.
+The * says the group matches zero or more times.
+The + says the group matches one or more times.
+The curly braces can match a specific number of times.
+The curly braces with two numbers matches a minimum and maximum number of times.
+Leaving out the first or second number in the curly braces says there is no minimum or maximum.
+"Greedy matching" matches the longest string possible, "nongreedy matching" (or "lazy matching") matches the shortest string possible.
+Putting a question mark after the curly braces makes it do a nongreedy/lazy match.
+
+ShortHand character class
+/d Any numeric digit from 0 to 9
+/D Any character that is not numeric digit from 0 to 9.
+/w Any letter, numeric digit, or the underscore character.
+/W Any character that is not letter, numeric digit, or the underscore character.
+/s Any space tab, or newline character.
+/S Any character that is not space tab, or newline character.
+
+The regex method findall() is passed a string, and returns all matches in it, not just the first match.
+If the regex has 0 or 1 group, findall() returns a list of strings.
+If the regex has 2 or more groups, findall() returns a list of tuples of strings.
+\d is a shorthand character class that matches digits. \w matches "word characters" (letters, numbers, and the underscore). \s matches whitespace characters (space, tab, newline).
+The uppercase shorthand character classes \D, \W, and \S match charaters that are not digits, word characters, and whitespace.
+You can make your own character classes with square brackets: [aeiou]
+A ^ caret makes it a negative character class, matching anything not in the brackets: [^aeiou]
+
+Files have a name and a path.
+The root folder is the lowest folder.
+In a file path, the folders and filename are separated by backslashes on Windows and forward slashes on Linux and Mac.
+Use the os.path.join() function to combine folders with the correct slash.
+The current working directory is the oflder that any relative paths are relative to.
+os.getcwd() will return the current working directory.
+os.chdir() will change the current working directory.
+Absolute paths begin with the root folder, relative paths do not.
+The . folder represents "this folder", the .. folder represents "the parent folder".
+os.path.abspath() returns an absolute path form of the path passed to it.
+os.path.relpath() returns the relative path between two paths passed to it.
+os.makedirs() can make folders.
+os.path.getsize() returns a file's size.
+os.listdir() returns a list of strings of filenames.
+os.path.exists() returns True if the filename passed to it exists.
+os.path.isfile() and os.path.isdir() return True if they were passed a filename or file path.
+
+The open() function will return a file object which has reading and writing â€“related methods.
+Pass 'r' (or nothing) to open() to open the file in read mode. Pass â€˜w' for write mode. Pass â€˜a' for append mode.
+Opening a nonexistent filename in write or append mode will create that file.
+Call read() or write() to read the contents of a file or write a string to a file.
+Call readlines() to return a list of strings of the file's content.
+Call close() when you are done with the file.
+The shelve module can store Python values in a binary file.
+The shelve.open() function returns a dictionary-like shelf value.
+
+
+Virtual environment:
+we need virtual env so as to separate applications using differents versions of python or its frameworks like django or flask.
+
+
+how do we create virtualenv in windows:
+pip install virtual env
+mkdir Environments
+cd  Environements
+python -m venv (venv_name)
+dir     we will see the list having venv name in it
+(venv_name)\Scripts\activate.bat
+now we are in the specified virtual environment
+
+
+
+Django Project:
+django-admin  --- it gives list of the admin django commands
+django-admin startproject django_project  --- it starts the project named django_project
+
+
+to run server we use python manage.py runserver
+
+Now we create application blog under the main project django_project 
+python manage.py startapp blog
+Now it also has some directory structure that has verious files 
+Our objective now is to hit the url "localhost:800/blog" and get some response, for this
+we create route in main django_project so that it can route to the location and also we modify views.py and make url.py in blog application
+
+To render template in place of HttpResponse plain html we have to create templates folder inside out blog application and blog folder inside templates
+and create html files for the respective routing.
+Now to update main project about these templates we have to add application in system.py in django_project.
+by adding 'blog.apps.BlogConfig', in IntstalledApps
+
+Till now we have not connected any database so if we want to access nay blog post in our home poge then we can create some dummy data on views as list of dictonary.
+the pass it to render from html page through third variable in render ('context')
+and define this list into the context and then  we can loop over this list in our html page.
+
+
+to create admin super user(to access admin page)
+we need to create database models and add some tables this can be done may running some migrations.
+python manage.py migrations it updates the database if we have created any, it doesnot run those changes
+python manage.py migrate is to run all the migrations , for the first time it creates tables auth user.
+
+
+Now we create database in Django with its own built in ORM(postgres)
+for dev we use SQLlite
+for production we use Postgres
+we use model.py in blog directory
+
+migrations are important so that we can updtae the database even if the database has been created , if thesewere not present then we would have to use sql queries to update the database.
+
+now we are in python django shell to check the data created:
+by running python manage.py shell
+from blog.models import Post
+from django.contrib.auth.models import User
+User.objects.all()  # to give all the user details that we have added to the existing database tables
+User.objects.first() # to give details of the user that has id 1
+User.objects.filter(username = 'saumya')  #it returns query list this can be stored in a variable
+
+To add data in database we use:
+Post.objects.all() # to check for the data that we have added
+post_1 = Post(title = '', content = '', author = '')
+post_1.save() # to save the changes made
+
+
+Now till now we have added the data through the python django shell and this can be seen when:
+we add in content: Post.objects.all() in views.py 
+we restart the server and check homepage.
+
+If we want to make changes from the admin url to the database then we need to import Post.py into admin as
+from .models from Post
+admin.site.register(Post)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
